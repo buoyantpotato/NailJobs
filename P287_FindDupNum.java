@@ -6,7 +6,8 @@ public class P287_FindDupNum {
             return -1;
         }
 
-
+        solution1(nums);
+        return solution2(nums);
 
     }
 
@@ -46,6 +47,7 @@ public class P287_FindDupNum {
         return last;
     }
 
+    // Time O(n), Space O(1)
     public int solution2(int[] nums) {
         int slow = nums[0];
         int fast = nums[0];
