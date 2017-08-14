@@ -6,7 +6,7 @@ public class P124_BTMaxPathSum {
 
         int[] max = new int[1];
         max[0] = Integer.MIN_VALUE;
-        
+
         int num = helper(root, max);
         return Math.max(num, max[0]);
 
