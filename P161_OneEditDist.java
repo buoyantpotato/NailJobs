@@ -70,7 +70,20 @@ public class P161_OneEditDist {
     }
 
     // Time O(n)  Slower but shortest
-//    private boolean sol3(String s, String t) {
-//        for (int i = 0; i < )
-//    }
+    private boolean sol3(String s, String t) {
+        int len = Math.min(s.length(), t.length());
+        for (int i = 0; i < len; i++) {
+            if (s.charAt(i) != t.charAt(i)) {
+                if (s.length() == t.length()) {
+                    return s.substring(i + 1).equals(t.substring(i + 1));
+                } else if (s.length() > t.length()) {
+                    return s.substring(i + 1).equals(t.substring(i));
+                } else {
+                    return s.substring(i).equals(t.substring(i + 1));
+                }
+            }
+        }
+
+        return Math.abs(s.length() - t.length()) == 1;
+    }
 }
