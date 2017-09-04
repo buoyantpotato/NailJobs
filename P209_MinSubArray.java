@@ -7,24 +7,18 @@ public class P209_MinSubArray {
         }
 
         // O(n)
-//        int min = Integer.MAX_VALUE;
-//        int slow = 0, fast = 0;
-//        int sum = nums[0];
-//
-//        while (slow < nums.length) {
-//            if (sum < s) {
-//                if (fast + 1 < nums.length) {
-//                    sum += nums[++fast];
-//                } else {
-//                    break;
-//                }
-//            } else {
-//                min = Math.min(min, fast - slow + 1);
-//                sum -= nums[slow++];
-//            }
-//        }
-//
-//        return (min == Integer.MAX_VALUE) ? 0 : min;
+        int start = 0, end = 0, sum = 0, min = Integer.MAX_VALUE;
+        for (; start < nums.length; start++) {
+            sum += nums[start];
+            if (sum >= s) {
+                while (end < start && sum - nums[end] >= s) {
+                    sum -= nums[end++];
+                }
+                min = Math.min(min, start - end + 1);
+            }
+        }
+
+        return min < Integer.MAX_VALUE ? min : 0;
 
         // O(nlogn) Binary Search
         int len = nums.length;
